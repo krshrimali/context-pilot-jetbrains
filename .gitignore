@@ -60,4 +60,7 @@ sandbox/    # IntelliJ sandbox directory
 # Test output
 test-output/
 reports/
-coverage/ 
+coverage/
+
+# Heap dumps
+*.hprof 
