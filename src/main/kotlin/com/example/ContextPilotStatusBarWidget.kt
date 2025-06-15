@@ -39,7 +39,7 @@ class ContextPilotStatusBarWidget(private val project: Project) : StatusBarWidge
 
     override fun getClickConsumer(): Consumer<MouseEvent>? = Consumer { event ->
         val actionManager = ActionManager.getInstance()
-        val group = actionManager.getAction("ContextPilot.MainMenu") as? ActionGroup ?: return@Consumer
+        val group = actionManager.getAction("com.example.ContextPilot.MainMenu") as? ActionGroup ?: return@Consumer
 
         val popup: ListPopup = JBPopupFactory.getInstance()
             .createActionGroupPopup(

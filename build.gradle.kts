@@ -1,7 +1,7 @@
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "1.8.21"
-    id("org.jetbrains.intellij") version "1.13.3"
+    id("org.jetbrains.kotlin.jvm") version "1.9.0"
+    id("org.jetbrains.intellij") version "1.15.0"
 }
 
 group = "com.example"
@@ -14,13 +14,17 @@ repositories {
 // Add JSON dependency
 dependencies {
     implementation("org.json:json:20231013")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
 }
 
 // Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
 intellij {
-    version.set("2023.1")
+    version.set("2023.3")
     type.set("IC") // Target IntelliJ IDEA Community Edition
-    plugins.set(listOf("Git4Idea"))
+    plugins.set(listOf(
+        "Git4Idea",  // Required for VCS operations
+        "platform-images" // Required for icons
+    ))
     updateSinceUntilBuild.set(false)
 }
 
@@ -38,8 +42,8 @@ tasks {
     }
 
     patchPluginXml {
-        sinceBuild.set("231")
-        untilBuild.set("251.*")
+        sinceBuild.set("233")
+        untilBuild.set("252.*")
     }
 
     buildSearchableOptions {

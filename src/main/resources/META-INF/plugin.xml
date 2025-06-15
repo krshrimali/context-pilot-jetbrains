@@ -1,31 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <idea-plugin>
-    <id>com.example.contextpilot</id>
-    <name>ContextPilot</name>
-    <vendor email="your.email@example.com" url="https://www.example.com">Your Company</vendor>
-
-    <description><![CDATA[
-        ContextPilot for IntelliJ - A tool for understanding code context and relationships.
-        
-        Features:
-        - Index your workspace for better code understanding
-        - Find related files based on code context
-        - View commit history and changes
-        - Analyze code relationships
-    ]]></description>
+    <id>com.example.context-pilot</id>
+    <name>Context Pilot</name>
+    <vendor>Your Company</vendor>
+    <description>Intelligent context-aware navigation for your codebase</description>
 
     <depends>com.intellij.modules.platform</depends>
-    <depends>Git4Idea</depends>
 
     <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="Context Pilot"
+                   icon="AllIcons.Actions.Search"
+                   anchor="right"
+                   factoryClass="com.example.toolwindow.ContextPilotToolWindowFactory"/>
+        
         <projectService serviceImplementation="com.example.ContextPilotService"/>
         <statusBarWidgetFactory implementation="com.example.ContextPilotStatusBarWidgetFactory"/>
         <postStartupActivity implementation="com.example.ContextPilotStartupActivity"/>
     </extensions>
 
     <actions>
-        <group id="ContextPilot.MainMenu" text="ContextPilot" description="ContextPilot actions">
-            <add-to-group group-id="MainMenu" anchor="before" relative-to-action="HelpMenu"/>
+        <group id="com.example.ContextPilot.MainMenu" 
+               text="Context Pilot" 
+               description="Context Pilot actions">
+            <add-to-group group-id="MainMenu" anchor="last"/>
             
             <action id="ContextPilot.IndexWorkspace" 
                     class="com.example.actions.IndexWorkspaceAction"
