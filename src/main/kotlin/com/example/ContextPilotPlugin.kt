@@ -99,33 +99,4 @@ class ContextPilotService(private val project: Project) {
     fun setLastIndexTime(time: Long) {
         lastIndexTime = time
     }
-}
-
-class ContextPilotStatusBarWidget(private val project: Project) : StatusBarWidget {
-    private var statusBar: StatusBar? = null
-    private var text = "$(search) ContextPilot"
-
-    override fun ID(): String = "ContextPilotWidget"
-
-    override fun getPresentation(): StatusBarWidget.TextPresentation {
-        return object : StatusBarWidget.TextPresentation {
-            override fun getText(): String = text
-            override fun getTooltipText(): String = "Click to show ContextPilot commands"
-            override fun getClickConsumer() = null // We'll handle clicks through the action system instead
-            override fun getAlignment(): Float = 0f
-        }
-    }
-
-    override fun install(statusBar: StatusBar) {
-        this.statusBar = statusBar
-    }
-
-    override fun dispose() {
-        statusBar = null
-    }
-
-    fun updateText(newText: String) {
-        text = newText
-        statusBar?.updateWidget(ID())
-    }
 } 

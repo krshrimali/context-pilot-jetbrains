@@ -13,6 +13,8 @@ import javax.swing.Icon
 import com.intellij.icons.AllIcons
 import com.intellij.openapi.ui.popup.JBPopupFactory
 import com.intellij.openapi.ui.popup.ListPopup
+import com.intellij.openapi.actionSystem.DataContext
+import com.intellij.openapi.ui.popup.JBPopupFactory.ActionSelectionAid
 
 class ContextPilotStatusBarWidget(private val project: Project) : StatusBarWidget, StatusBarWidget.MultipleTextValuesPresentation {
     private var statusBar: StatusBar? = null
@@ -43,10 +45,10 @@ class ContextPilotStatusBarWidget(private val project: Project) : StatusBarWidge
             .createActionGroupPopup(
                 "ContextPilot Actions",
                 group,
-                event.component.let { actionManager.createActionToolbar(ActionPlaces.UNKNOWN, group, true).component },
+                DataContext.EMPTY_CONTEXT,
+                ActionSelectionAid.SPEEDSEARCH,
                 true,
-                true,
-                true
+                null
             )
 
         val component = event.component
