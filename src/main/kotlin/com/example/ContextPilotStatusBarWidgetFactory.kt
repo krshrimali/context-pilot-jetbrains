@@ -10,6 +10,8 @@ class ContextPilotStatusBarWidgetFactory : StatusBarWidgetFactory {
     override fun getDisplayName(): String = "ContextPilot"
     override fun isAvailable(project: Project): Boolean = true
     override fun createWidget(project: Project): StatusBarWidget = ContextPilotStatusBarWidget(project)
-    override fun disposeWidget(widget: StatusBarWidget) = widget.dispose()
+    override fun disposeWidget(widget: StatusBarWidget) {
+        widget.dispose()
+    }
     override fun canBeEnabledOn(statusBar: StatusBar): Boolean = true
 } 
